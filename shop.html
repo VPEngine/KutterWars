@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Kutter Discount Wars</title>
+  <link rel="stylesheet" href="base.css" type="text/css" />
+  <link rel="icon" type="image/png" href="images/logo.png" sizes="32x32">
+  <meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div id='container'>
+    </br></br>
+    <center><font size="5" color='#0d6bc3'><strong> <span id="discountBar"></span> </strong></font></center>
+    <br><br><br>
+    Item 1
+    <br><br>
+    Item 2
+    <br><br>
+    Item 3
+    <br><br><br>
+    <center><a style="text-decoration: none;" href="index.html"><font size="5" color='#a55f2a'><strong>⬅ Back </strong></font></a></center>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/jquery.min.js"></script> <!-- jQuery -->
+  <script>
+    // How to retrieve local HTML variable
+    var discount = localStorage.getItem("discountNumber");
+
+    $('#discountBar').text(`🛒 ${discount}% Discount on total purchases!`);
+  </script>
+  
+</body>
+</html>
+
+
