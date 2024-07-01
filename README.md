@@ -38,7 +38,7 @@ Install the following applications on your PC before installing.
 
 ### Download or Clone app from Github:
 
-Go to https://github.com/VPEngine/Kutter and download or clone the app.
+Go to https://github.com/VPEngine/KutterWars and download or clone the app.
 
 </br>
 
