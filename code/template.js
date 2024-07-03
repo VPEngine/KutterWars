@@ -2,6 +2,7 @@
 
 let myElement = $w("#myElement");
 
+
 let elementType = myElement.type; // "$w.Type"
 
 

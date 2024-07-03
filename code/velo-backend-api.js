@@ -139,7 +139,7 @@ var urlString = wixLocationFrontend.url;
 
 // To store local browser data: wixStorageFrontend.setItem
 
-import {local} from "wix-storage-frontend"; // PLACE UNDER: masterPage.js
+import {local} from "wix-storage-frontend"; 
 
 local.setItem("key","value")
 
