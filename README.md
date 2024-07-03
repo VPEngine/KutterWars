@@ -34,5 +34,5 @@ _Kutter Wars Interfaces:_
 
 Check out the live web app.
 
-[https://vpengine.github.io/KutterWars/index.html](https://vpengine.github.io/KutterWars/index.html), 
+[https://vpengine.github.io/KutterWars/index.html](https://vpengine.github.io/KutterWars/index.html)
 
