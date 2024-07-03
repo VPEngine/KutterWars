@@ -7,6 +7,8 @@ Users play a simple alien-caterpillar invasion game and their play score determi
 
 The discounts will range from 0 - 25%, depending on the user's play score.
 
+After a user is done playing the game, a discount coupon is generated and the user can "Proceed to Shopping" on the Wix shop using that coupon.
+
 <br/>
 
 _Kutter Wars Interfaces:_
@@ -28,38 +30,9 @@ _Kutter Wars Interfaces:_
 
 <br/>
 
-## Installation:
+## LIVE DEMO:
 
-Install the following applications on your PC before installing.
+Check out the live web app.
 
-- [Node.JS](https://nodejs.org/en/download/current/), 
-
-</br>
-
-### Download or Clone app from Github:
-
-Go to https://github.com/VPEngine/KutterWars and download or clone the app.
-
-</br>
-
-### Install NPM dependencies:
-
-Open the unzipped folder in your favorite code editor and install the app's npm dependency modules. 
-
-_npm install_
-
-</br>
-
-### Running the App:
-
-To run the app, execute the command below in the Command terminal. 
-
-_node app.js_
-
-</br>
-
-You should see a message like, "App running on port: 8700" in your command terminal.
-
-Open your browser and visit, http://localhost:8700/ to view the app.
-
+[https://vpengine.github.io/KutterWars/index.html](https://vpengine.github.io/KutterWars/index.html), 
 
