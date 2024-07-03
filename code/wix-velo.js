@@ -1,26 +1,12 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Kutter Discount Wars</title>
-  <link rel="stylesheet" href="base.css" type="text/css" />
-  <link rel="icon" type="image/png" href="images/logo.png" sizes="32x32">
-  <meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-</head>
-<body>
-  <div id='container'>
-    <strong>HINT: Press 'Space' button to start and shoot. '<' to move left, '>' to right. </strong>
-    </br></br>
-    <strong>NOTE: Your play score will determine the discount you get on all purchases in the store. </strong>
-    </br></br></br>
-    <center><canvas id='game' width='320' height='480'></canvas></center>
-    <br><br>
-    <center><a style="text-decoration: none;" href="shop.html"><font size="5" color='#0d6bc3'><strong> 🛒 Proceed to Shopping </strong></font></a></center>
-  </div>
-  <script>
-    (function() {
+//$w.onReady(
+
+// Get Canvas Window
+var $gameCanvas = $w(`#game`);
+var gameCanvas = $gameCanvas[0];
+var doc = gameCanvas.ownerDocument;
+var window = doc.defaultView || doc.parentWindow;
+
+(function() {
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
     for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -45,13 +31,12 @@
         };
 }());
   
-
 var Game = new function() {                                                                  
   var boards = [];
 
   // Game Initialization
   this.initialize = function(canvasElementId,sprite_data,callback) {
-    this.canvas = document.getElementById(canvasElementId);
+    this.canvas = $w(`#${canvasElementId}`); // ....................... FIX ME .................................
 
     this.playerOffset = 10;
     this.canvasMultiplier= 1;
@@ -74,7 +59,6 @@ var Game = new function() {
     SpriteSheet.load(sprite_data,callback);
   };
   
-
   // Handle Input
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
   this.keys = {};
@@ -87,7 +71,7 @@ var Game = new function() {
       }
     },false);
 
-    window.addEventListener('keyup',function(e) {
+    window.addEventListener('keyup',function(e) { // ........................ FIX ME ..............................
       if(KEY_CODES[e.keyCode]) {
        Game.keys[KEY_CODES[e.keyCode]] = false; 
        e.preventDefault();
@@ -117,7 +101,7 @@ var Game = new function() {
   this.setBoard = function(num,board) { boards[num] = board; };
 
   this.setupMobile = function() {
-    var container = document.getElementById("container"),
+    var container = $w("#container"),  // ........................ FIX ME ..............................
         hasTouch =  !!('ontouchstart' in window),
         w = window.innerWidth, h = window.innerHeight;
       
@@ -157,7 +141,6 @@ var Game = new function() {
 
 };
 
-
 var SpriteSheet = new function() {
   this.map = { }; 
 
@@ -165,7 +148,7 @@ var SpriteSheet = new function() {
     this.map = spriteData;
     this.image = new Image();
     this.image.onload = callback;
-    this.image.src = 'images/sprites.png';
+    this.image.src = 'images/sprites.png'; // ..................... FIX ME .................
   };
 
   this.draw = function(ctx,sprite,x,y,frame) {
@@ -204,7 +187,6 @@ var TitleScreen = function TitleScreen(title,subtitle,callback) {
     ctx.fillText(subtitle,Game.width/2 - measure2.width/2,Game.height/2 + 40);
   };
 };
-
 
 var GameBoard = function() {
   var board = this;
@@ -323,7 +305,6 @@ Sprite.prototype.hit = function(damage) {
   this.board.remove(this);
 };
 
-
 var Level = function(levelData,callback) {
   this.levelData = [];
   for(var i =0; i<levelData.length; i++) {
@@ -375,7 +356,6 @@ Level.prototype.step = function(dt) {
 };
 
 Level.prototype.draw = function(ctx) { };
-
 
 var TouchControls = function() {
 
@@ -440,17 +420,16 @@ var TouchControls = function() {
     }
   };
 
-  Game.canvas.addEventListener('touchstart',this.trackTouch,true);
-  Game.canvas.addEventListener('touchmove',this.trackTouch,true);
-  Game.canvas.addEventListener('touchend',this.trackTouch,true);
+  Game.canvas.addEventListener('touchstart',this.trackTouch,true);  // ........................ FIX ME ..............................
+  Game.canvas.addEventListener('touchmove',this.trackTouch,true);  // ........................ FIX ME ..............................
+  Game.canvas.addEventListener('touchend',this.trackTouch,true);  // ........................ FIX ME ..............................
 
   // For Android
-  Game.canvas.addEventListener('dblclick',function(e) { e.preventDefault(); },true);
-  Game.canvas.addEventListener('click',function(e) { e.preventDefault(); },true);
+  Game.canvas.addEventListener('dblclick',function(e) { e.preventDefault(); },true);  // ........................ FIX ME ..............................
+  Game.canvas.addEventListener('click',function(e) { e.preventDefault(); },true);  // ........................ FIX ME ..............................
 
   Game.playerOffset = unitWidth + 20;
 };
-
 
 var GamePoints = function() {
   Game.points = 0;
@@ -474,8 +453,8 @@ var GamePoints = function() {
   this.step = function(dt) { };
   };
 
-  </script>
-  <script>
+// Script 2
+
 var sprites = {
  ship: { sx: 0, sy: 0, w: 37, h: 42, frames: 1 },
  missile: { sx: 0, sy: 30, w: 2, h: 10, frames: 1 },
@@ -540,7 +519,6 @@ var playGame = function() {
 
 // Initialize discount to zero
 localStorage.setItem("discountNumber", 0);
-localStorage.setItem("discountCoupon", `KutterGame-${0}`);
 
 var winGame = function() {
 
@@ -550,7 +528,6 @@ var winGame = function() {
 
   // Set local HTML variable for high discount;
   localStorage.setItem("discountNumber", randomHighNumber);
-  localStorage.setItem("discountCoupon", `KutterGame-${randomHighNumber}`);
 
   // How to retrieve local HTML variable
   //var localHighDiscount = localStorage.getItem("randomHighNumber");
@@ -568,7 +545,6 @@ var loseGame = function() {
 
   // Set local HTML variable for low discount
   localStorage.setItem("discountNumber", randomLowNumber);
-  localStorage.setItem("discountCoupon", `KutterGame-${randomLowNumber}`);
 
   // How to retrieve local HTML variable
   //var localLowDiscount = localStorage.getItem("randomLowNumber");
@@ -581,7 +557,7 @@ var loseGame = function() {
 var Starfield = function(speed,opacity,numStars,clear) {
 
   // Set up the offscreen canvas
-  var stars = document.createElement("canvas");
+  var stars = document.createElement("canvas"); // ........................ FIX ME ...........................
   stars.width = Game.width; 
   stars.height = Game.height;
   var starCtx = stars.getContext("2d");
@@ -770,12 +746,9 @@ Explosion.prototype.step = function(dt) {
   }
 };
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function() { // ........................ FIX ME ..............................
   Game.initialize("game",sprites,startGame);
 });
 
-  </script>
-</body>
-</html>
-
+//);
 

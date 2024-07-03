@@ -12,24 +12,38 @@
 <body>
   <div id='container'>
     </br></br>
-    <center><font size="5" color='#0d6bc3'><strong> <span id="discountBar"></span> </strong></font></center>
-    <br><br><br>
-    Item 1
+    <center><font size="5" color='#0d6bc3'><strong><font color='brown'>✂</font> &nbsp; <span id="discountBar"></span> </strong></font></center>
     <br><br>
-    Item 2
+    <!-- Item 1 -->
     <br><br>
-    Item 3
-    <br><br><br>
+    <center><font size="4" color='#000'><strong><font color='brown'>⬜ Coupon Code: </font> &nbsp; <span id="discountCoupon"></span> </strong></font></center>
+    <br><br>
+    <!-- Item 1 -->
+    <br><br>
+    <!-- Item 2 -->
+    <br><br>
+    <!-- Item 3 -->
+    <br><br>
+    <center><a style="text-decoration: none;" href="https://vakinduphilliam.wixsite.com/kutter-discount-wars" onclick="location.href=this.href+'?d='+discount+'&c='+discountCoupon;return false;"><font size="5" color='green'><strong> 🛒 Proceed to Shopping </strong></font></a></center>
+    <br><br>
+    <!-- Item 1 -->
+    <br><br>
+    <!-- Item 2 -->
+    <br><br>
+    <!-- Item 3 -->
+    <br><br>
     <center><a style="text-decoration: none;" href="index.html"><font size="5" color='#a55f2a'><strong>⬅ Back </strong></font></a></center>
   </div>
 
   <!-- Scripts -->
   <script src="assets/jquery.min.js"></script> <!-- jQuery -->
   <script>
-    // How to retrieve local HTML variable
+    // Retrieve local HTML variables
     var discount = localStorage.getItem("discountNumber");
+    var discountCoupon = localStorage.getItem("discountCoupon");
 
-    $('#discountBar').text(`🛒 ${discount}% Discount on total purchases!`);
+    $('#discountBar').text(`${discount}% Discount on total purchases!`);
+    $('#discountCoupon').text(`${discountCoupon}`);
   </script>
   
 </body>
