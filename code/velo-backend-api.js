@@ -52,21 +52,6 @@ cart
 
 
 
-// Cart checkout code: 
-
-import {cart} from "wix-stores-frontend";
-
-cart
-.removeCoupon()
-.then((updatedCart)=>{
-    const cartId = updatedCart._id;
-    const cartLineItems = updatedCart.lineItems;
-})
-.catch((error)=>{
-    console.error(error);
-});
-
-
 
 
 // Cart coupon discount code: applyCoupon()
@@ -138,4 +123,43 @@ cart
     // products not added to cart
     console.error(error);
 });
+
+
+
+
+// To capture current page url: wixLocationFrontend.url
+
+import wixLocationFrontend from "wix-location-frontend";
+
+var urlString = wixLocationFrontend.url;
+
+
+
+
+
+// To store local browser data: wixStorageFrontend.setItem
+
+import {local} from "wix-storage-frontend"; // PLACE UNDER: masterPage.js
+
+local.setItem("key","value")
+
+
+
+
+
+// Cart checkout code: 
+
+import {cart} from "wix-stores-frontend";
+
+cart
+.removeCoupon()
+.then((updatedCart)=>{
+    const cartId = updatedCart._id;
+    const cartLineItems = updatedCart.lineItems;
+})
+.catch((error)=>{
+    console.error(error);
+});
+
+
 
