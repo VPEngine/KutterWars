@@ -13,7 +13,7 @@ var productId = $w("#appleredPage")
     return product._id;
 })
 .catch((error)=>{
-    console.error(error);
+    return null;
 });
 
 // Capture product stock quantity using getQuantity()
@@ -23,7 +23,7 @@ var itemQuantity = $w("#appleredPage")
     return productQuantity;
 })
 .catch((error)=>{
-    console.error(error);
+    return null;
 });
 
 var products =[{
