@@ -141,7 +141,42 @@ var urlString = wixLocationFrontend.url;
 
 import {local} from "wix-storage-frontend"; 
 
-local.setItem("key","value")
+local.setItem("key","value");
+
+
+
+
+
+
+// Capture product details code: getProduct()
+
+$w("#myProductPage")
+.getProduct()
+.then((product)=>{
+    const productName = product.name;
+    const productDescription = product.description;
+})
+.catch((error)=>{
+    console.error(error);
+});
+
+
+
+
+
+// Capture product stock quantity code: getQuantity()
+
+$w("#myProductPage")
+.getQuantity()
+.then((productQuantity)=>{
+    const productStock = productQuantity;
+})
+.catch((error)=>{
+    console.error(error);
+});
+
+
+
 
 
 
