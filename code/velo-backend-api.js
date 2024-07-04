@@ -1,11 +1,11 @@
 
 
-/********************  masterPage.js  **************************/
-
 /**
  * Where to put code:
  * In the Wix Studio sidebar / Velo Sidebar (Wix Editor), select the Page code tab for frontend code,
- * and the Public &  backend tab for backend code
+ * and the Public & backend tab for backend code.
+ * 
+ * ********************  masterPage.js  **************************
  */
 
 
