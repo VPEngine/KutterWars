@@ -6,8 +6,12 @@ import {cart} from "wix-stores-frontend";
 
 // $w.onReady(function () {
 
+$w("#myButton").onClick((event) => {
+
+let targetId = event.target.id; // "myProductId"
+
 // Capture product id using getProduct()
-var productId = $w("#appleredPage")
+let productId = $w(`#${targetId}`)
 .getProduct()
 .then((product)=>{
     return product._id;
@@ -17,7 +21,7 @@ var productId = $w("#appleredPage")
 });
 
 // Capture product stock quantity using getQuantity()
-var itemQuantity = $w("#appleredPage")
+let itemQuantity = $w(`#${targetId}`)
 .getQuantity()
 .then((productQuantity)=>{
     return productQuantity;
@@ -26,7 +30,7 @@ var itemQuantity = $w("#appleredPage")
     return null;
 });
 
-var products =[{
+let products =[{
     productId: productId,
     quantity: itemQuantity
 }];
@@ -42,6 +46,8 @@ cart
 .catch((error)=>{
     // products not added to cart
     console.error(error);
+});
+
 });
 
 // });
@@ -182,7 +188,7 @@ getParameters();
 
 
 
-// METHOD 2: BEST BEST BEST
+// METHOD 2: BEST
 
 // To capture current page url: wixLocationFrontend.url
 
@@ -209,5 +215,48 @@ for(let pair of queryString.entries()){
 }
 
 // });
+
+
+
+
+
+
+// METHOD 2: BEST BEST BEST
+
+// To capture current page url: wixLocationFrontend.url
+
+//var urlString ="https://vakinduphilliam.wixstudio.com/kutter-wars?d=7&c=KutterGame-7"; // Example URL
+import wixLocationFrontend from "wix-location-frontend";
+import {local} from "wix-storage-frontend";
+// INSTALL NPM PACKAGES: wix-storage-frontend, wix-location-frontend
+
+// $w.onReady(function () {
+
+var urlQuery = wixLocationFrontend.query; // get url query
+
+// Get parameter values
+var discount = urlQuery.d;
+var coupon = urlQuery.c;
+
+if(discount =='' || coupon == '' || typeof discount == 'undefined' || typeof coupon == 'undefined'){
+
+$w('#discountBar').text(`0% Discount on total purchases!`); 
+$w('#discountCoupon').text(`COUPON: No Coupon`);  
+
+local.setItem("discountNumber", 0);
+local.setItem("discountCoupon", "null");
+
+} else {
+
+$w('#discountBar').text(`${discount}% Discount on total purchases!`); 
+local.setItem("discountNumber", discount);
+
+$w('#discountCoupon').text(`Coupon: ${coupon}`); 
+local.setItem("discountCoupon", coupon);
+
+}
+
+// });
+
 
 

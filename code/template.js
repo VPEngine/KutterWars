@@ -68,4 +68,14 @@ $w("#myElement").onClick((event) => {
 
 
 
+$w.onReady(function () {
+    $w("#myButton").buttonLabel = "Manage contacts"; // set the button's label
+
+    $w("#myButton").onClick(async () => {
+      await wixEditor.openDashboardPanel({url: "/contacts"}); // open the site's contacts dashboard page
+    });
+});
+
+
+
 
